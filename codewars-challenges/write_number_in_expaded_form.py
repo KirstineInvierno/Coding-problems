@@ -1,13 +1,10 @@
-def expanded_form(num:int)-> str:
-    expanded = ""
+def expanded_form(num:int)->str:
+    """Returns a string of a number in expanded form."""
+    expanded = []
+    num = str(num)
 
-    if num < 10:
-        return str(num)
-    else:
-        num = str(num)
-        for i in range(len(str(num))):
-            if num[i] != "0":
-                if len(expanded) > 0:
-                    expanded += " + "
-                expanded += num[i] + "0" * (len(num) - i - 1)
-    return expanded
+    for i in range(len(num)):
+        if num[i] != "0":
+            value = int(num[i]) * (10 ** (len(num) - i - 1))
+            expanded.append(str(value))
+    return " + ".join(expanded)
